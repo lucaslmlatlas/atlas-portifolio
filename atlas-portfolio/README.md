@@ -94,8 +94,8 @@ flowchart TB
 
 **Lucas Lemos** — contador em transição para desenvolvedor de agentes de IA. Construindo o Atlas como portfólio, laboratório e sistema pessoal de suporte estratégico.
 
-- LinkedIn: *(adicionar)*
-- Email: *(adicionar)*
+- LinkedIn: *Lucas Lemos - www.linkedin.com/in/lucas-lemos-268294111*
+- Email: *lucas.lml.altas@gmail.com*
 
 ---
 
