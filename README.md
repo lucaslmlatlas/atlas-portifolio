@@ -25,10 +25,11 @@ O Atlas não é um único prompt. É um **sistema de 5 perfis Hermes Agent** tra
 | Perfil | Papel | Onde está documentado |
 |---|---|---|
 | `atlas-orchestrator` | Roteia interações e resolve conflitos cross-pilar | `_SISTEMA/ORCHESTRATOR.md` |
-| `atlas-p1-monitor` | Worker especializado em saúde | `_SISTEMA/AGENTS.md` |
-| `atlas-p4-analista` | Worker especializado em finanças | `_SISTEMA/AGENTS.md` |
+| `atlas-p1-monitor` | Worker de monitoramento de saúde | `_SISTEMA/AGENTS.md` |
+| `atlas-p1-terapeutico` | Worker de apoio terapêutico | `_SISTEMA/AGENTS.md` |
+| `atlas-p4-analista` | Worker analítico de finanças | `_SISTEMA/AGENTS.md` |
 | `atlas-p4-operacional` | Worker de execução financeira | `_SISTEMA/AGENTS.md` |
-| `atlas-p2-dev` | Worker de desenvolvimento e portfólio | `_SISTEMA/AGENTS.md` |
+| `atlas-p2-dev` | Worker de desenvolvimento e portfólio *(Fase 2)* | `_SISTEMA/AGENTS.md` |
 
 Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilidades), o gateway Hermes e a persistência em Git:
 
@@ -46,8 +47,10 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
                ▼
 ┌─────────────────────────────────────┐
 │     5 PERFIS HERMES AGENT ATIVOS    │
-│  Orchestrator │ P1-Saúde │ P4-Fin  │
-│  P4-Operações │ P2-Dev(Fase 2)      │
+│  Orchestrator │ P1-Monitor│ P1-Terap│
+│  P4-Analista  │ P4-Operacional      │
+├─────────────────────────────────────┤
+│     P2-Dev (Fase 2) — planejado     │
 └──────────────┬──────────────────────┘
                │
                ▼
@@ -95,7 +98,7 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
 | **System prompt do Orchestrator** | `_SISTEMA/ORCHESTRATOR.md` |
 | **Constituição e regras** | `_SISTEMA/SOUL.md` e `_SISTEMA/RULES.md` |
 | **13 cron jobs** | `_SISTEMA/BOOTSTRAP.md` e `_SISTEMA/ORCHESTRATOR.md` |
-| **22 ADRs** | `Arquivos_Base/Denifidos/decisoes/` e `MEMORIA/curto_prazo/decisoes/` |
+| **22 ADRs** | `MEMORIA/curto_prazo/decisoes/` |
 | **Memória curta prazo** | `MEMORIA/curto_prazo/` |
 | **Memória longo prazo** | `MEMORIA/longo_prazo/` |
 | **Skills custom** | `HABILIDADES/<skill-name>/SKILL.md` |
