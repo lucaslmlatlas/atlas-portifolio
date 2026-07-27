@@ -135,7 +135,9 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
 
 ## Demonstração
 
-[](https://www.youtube.com/watch?v=OhnpdTJnuYs)
+<a href="https://www.youtube.com/watch?v=OhnpdTJnuYs" target="_blank">
+  <img src="https://img.youtube.com/vi/OhnpdTJnuYs/hqdefault.jpg" alt="Atlas — Demonstração" width="480">
+</a>
 
 *Tour pelo repositório atlas-portifolio e visão geral da arquitetura do sistema (90s).*
 
