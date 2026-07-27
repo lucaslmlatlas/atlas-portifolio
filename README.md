@@ -137,10 +137,9 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
 
 ## Demonstração
 
-[![Atlas — Tour pelo sistema multi-agente](thumbnail.jpg)]([https://youtu.be/SEU_VIDEO_ID](https://youtube.com/shorts/OhnpdTJnuYs))
+[](https://www.youtube.com/watch?v=OhnpdTJnuYs)
 
-*Tour completo: arquitetura, 5 perfis, 3 camadas e infraestrutura em produção (90s).*
-
+*Tour pelo repositório atlas-portifolio e visão geral da arquitetura do sistema (90s).*
 
 ## Roadmap
 
