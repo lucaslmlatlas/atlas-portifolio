@@ -135,10 +135,9 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
 
 ## Demonstração
 
-https://github.com/lucaslmlatlas/atlas-portifolio/releases/download/v0.1.0/VID_20260727_134841_465.mp4
+<video src="atlas-demo.mp4" controls width="100%" style="max-width:720px"></video>
 
-
-*(Screenshot da estrutura de pastas e exemplo de interação via Telegram podem ser adicionados aqui no futuro.)*
+*Demonstração do repositório atlas-portifolio e visão geral do sistema.*o.)*
 
 ## Roadmap
 
