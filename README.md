@@ -135,9 +135,9 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
 
 ## Demonstração
 
-<video src="https://github.com/lucaslmlatlas/atlas-portifolio/raw/main/assets/Demonstração_Atlas.mp4" controls width="100%" playsinline></video>
+https://github.com/lucaslmlatlas/atlas-portifolio/raw/main/assets/atlas-demo.mp4
 
-[Vídeo de demonstração do Atlas em operação](https://github.com/lucaslmlatlas/atlas-portifolio/raw/main/assets/Demonstração_Atlas.mp4)
+*(Se o player não carregar, [baixe o vídeo aqui](https://github.com/lucaslmlatlas/atlas-portifolio/raw/main/assets/atlas-demo.mp4).)*
 
 *(Screenshot da estrutura de pastas e exemplo de interação via Telegram podem ser adicionados aqui no futuro.)*
 
