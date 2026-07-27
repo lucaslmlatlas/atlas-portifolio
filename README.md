@@ -18,42 +18,101 @@ O resultado: repetição, perda de insights e decisões tomadas sem memória do 
 2. **Orquestração multi-agente** — um orchestrador central roteia decisões para agentes especializados.
 3. **Vida organizada em pilares** — saúde, desenvolvimento, relações, finanças e propósito, cada um com sua própria skill.
 
-## Arquitetura
+## Arquitetura multi-agente
 
-```mermaid
-flowchart TB
-    subgraph Contexto["📚 CONTEXTO"]
-        SOUL["SOUL.md<br>constituição e valores"]
-        RULES["RULES.md<br>regras de operação"]
-        AGENTS["AGENTS.md<br>perfis de agentes"]
-        ORCH["ORCHESTRATOR.md<br>motor de roteamento"]
-    end
+O Atlas não é um único prompt. É um **sistema de 5 perfis Hermes Agent** trabalhando em conjunto:
 
-    subgraph Memoria["🧠 MEMÓRIA"]
-        CP["curto_prazo/<br>diário, alertas, tendências"]
-        LP["longo_prazo/<br>dossiês, histórico, padrões"]
-    end
+| Perfil | Papel | Onde está documentado |
+|---|---|---|
+| `atlas-orchestrator` | Roteia interações e resolve conflitos cross-pilar | `_SISTEMA/ORCHESTRATOR.md` |
+| `atlas-p1-monitor` | Worker especializado em saúde | `_SISTEMA/AGENTS.md` |
+| `atlas-p4-analista` | Worker especializado em finanças | `_SISTEMA/AGENTS.md` |
+| `atlas-p4-operacional` | Worker de execução financeira | `_SISTEMA/AGENTS.md` |
+| `atlas-p2-dev` | Worker de desenvolvimento e portfólio | `_SISTEMA/AGENTS.md` |
 
-    subgraph Habilidades["🛠️ HABILIDADES"]
-        P1["p1-saude"]
-        P4A["p4-financas"]
-        P4B["p4-validacao-financeira"]
-        ORC["orchestrator"]
-        CROSS["cross-pilar-triggers"]
-        DAILY["daily-writer"]
-        WEEKLY["weekly-consolidator"]
-        HANDOFF["atlas-handoff"]
-        BACKLOG["atlas-backlog"]
-        CONFLITO["conflito-decisao"]
-        HEART["heartbeat-coordinator"]
-        CTX["context-injector"]
-    end
+Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilidades), o gateway Hermes e a persistência em Git:
 
-    Contexto --> ORC
-    Memoria --> ORC
-    ORC --> Habilidades
-    Habilidades --> Memoria
 ```
+┌─────────────────────────────────────┐
+│         USUÁRIO via Telegram        │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│      HERMES AGENT — Gateway 24/7    │
+│   Telegram + Cron + Voice + LLM     │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│     5 PERFIS HERMES AGENT ATIVOS    │
+│  Orchestrator │ P1-Saúde │ P4-Fin  │
+│  P4-Operações │ P2-Dev(Fase 2)      │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│       ORQUESTRADOR CENTRAL          │
+│  roteia · contexto · triggers · ADRs│
+└──────────────┬──────────────────────┘
+               │
+    ┌──────────┼──────────┐
+    ▼          ▼          ▼
+┌───────┐  ┌───────┐  ┌──────────────┐
+│CONTEXTO│  │MEMÓRIA│  │ HABILIDADES  │
+│_SISTEMA│  │MEMORIA│  │ HABILIDADES/ │
+│       │  │       │  │              │
+│SOUL   │  │curto  │  │p1-saude      │
+│RULES  │  │longo  │  │p4-financas   │
+│AGENTS │  │       │  │p4-validacao  │
+│ORCH   │  │13 cron│  │context-inj.  │
+│USER   │  │jobs   │  │cross-pilar   │
+│       │  │       │  │heartbeat     │
+│22 ADRs│  │       │  │daily-writer  │
+│       │  │       │  │weekly-consol.│
+│       │  │       │  │atlas-handoff │
+│       │  │       │  │conflito-dec. │
+└───────┘  └───────┘  └──────────────┘
+    │          │          │
+    └──────────┴──────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│   RESPOSTA + PERSISTÊNCIA (Git)     │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│         USUÁRIO via Telegram        │
+└─────────────────────────────────────┘
+```
+
+### Onde estão documentados os componentes principais
+
+| Componente | Localização |
+|---|---|
+| **5 perfis Hermes Agent** | `_SISTEMA/AGENTS.md` |
+| **System prompt do Orchestrator** | `_SISTEMA/ORCHESTRATOR.md` |
+| **Constituição e regras** | `_SISTEMA/SOUL.md` e `_SISTEMA/RULES.md` |
+| **13 cron jobs** | `_SISTEMA/BOOTSTRAP.md` e `_SISTEMA/ORCHESTRATOR.md` |
+| **22 ADRs** | `Arquivos_Base/Denifidos/decisoes/` e `MEMORIA/curto_prazo/decisoes/` |
+| **Memória curta prazo** | `MEMORIA/curto_prazo/` |
+| **Memória longo prazo** | `MEMORIA/longo_prazo/` |
+| **Skills custom** | `HABILIDADES/<skill-name>/SKILL.md` |
+
+## Infraestrutura em Produção
+
+| Componente | Quantidade |
+|---|---|
+| **Perfis Hermes Agent** | 5 (1 Orchestrator + 4 workers especializados) |
+| **Skills custom** | 11 (formato SKILL.md) |
+| **Cron jobs 24/7** | 13 (heartbeats, daily writer, triggers cross-pilar) |
+| **ADRs documentadas** | 22 (decisões de arquitetura rastreadas e versionadas) |
+| **Pilares ativos** | P1 (Saúde) + P4 (Finanças) |
+| **Interface** | Telegram (gateway nativo) |
+| **Stack** | VPS Linux + Hermes Agent + GitHub + Telegram |
+| **LLM** | DeepSeek V4 Pro + Gemini 2.5 Flash (fallback) |
+| **Hospedagem** | Integrator Linux Pura — 4 vCPU · 5.8 GB RAM · 99 GB SSD · Ubuntu 26.04 LTS |
 
 ## Habilidades ativas
 
@@ -69,7 +128,6 @@ flowchart TB
 | `daily-writer` | Registro diário + commit automático |
 | `weekly-consolidator` | Consolidado semanal dos 5 pilares |
 | `atlas-handoff` | Processo de sincronização entre sessões |
-| `atlas-backlog` | Gestão de tarefas e reconciliação com Kanban |
 | `conflito-decisao` | Detecção de reversões e registro de ADRs |
 
 ## Demonstração
@@ -78,10 +136,9 @@ flowchart TB
 
 ## Roadmap
 
-- **Fase 1** — Pilares Saúde (P1) e Finanças (P4) operacionais.
-- **Fase 2** — Ativação do pilar Desenvolvimento (P2) e portfólio comercial.
-- **Fase 3** — Pilares Relações (P3) e Propósito (P5).
-- **Futuro** — Empacotamento do Atlas como AIaaS para PMEs.
+- ✅ **Fase 1 (ativo)** — P1 (Saúde) e P4 (Finanças) operacionais. 5 perfis, 13 cron jobs, 22 ADRs.
+- 📅 **Fase 2** — P2 (Desenvolvimento). Perfil `atlas-p2-dev`, portfólio comercial, AIaaS.
+- 📅 **Fase 3** — P3 (Relações) e P5 (Propósito).
 
 ## Tecnologias e integrações
 
@@ -94,8 +151,8 @@ flowchart TB
 
 **Lucas Lemos** — contador em transição para desenvolvedor de agentes de IA. Construindo o Atlas como portfólio, laboratório e sistema pessoal de suporte estratégico.
 
-- LinkedIn: *Lucas Lemos - www.linkedin.com/in/lucas-lemos-268294111*
-- Email: *lucas.lml.altas@gmail.com*
+- LinkedIn: [Lucas Lemos](http://www.linkedin.com/in/lucas-lemos-268294111)
+- Email: lucas.lml.altas@gmail.com
 
 ---
 

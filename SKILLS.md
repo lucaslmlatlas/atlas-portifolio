@@ -1,6 +1,6 @@
 # Habilidades do Atlas
 
-Este documento descreve as skills ativas do sistema.
+Este documento descreve as 11 skills custom ativas do sistema.
 
 ## Domínio
 
@@ -37,9 +37,6 @@ Produz consolidado semanal dos 5 pilares e atualiza tendências.
 
 ### `atlas-handoff`
 Processo de flush entre sessões: memória curta → diário → MOC → commit.
-
-### `atlas-backlog`
-Gestão de tarefas, reconciliação com Kanban e priorização.
 
 ### `conflito-decisao`
 Detecta reversões de decisão e registra ADRs quando necessário.
