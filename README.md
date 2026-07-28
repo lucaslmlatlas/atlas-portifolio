@@ -159,7 +159,7 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
 **Lucas Lemos** — contador em transição para desenvolvedor de agentes de IA. Construindo o Atlas como portfólio, laboratório e sistema pessoal de suporte estratégico.
 
 - LinkedIn: [Lucas Lemos](http://www.linkedin.com/in/lucas-lemos-268294111)
-- Email: lucas.lml.altas@gmail.com
+- Email: lucas.lml.atlas@gmail.com
 
 ---
 
