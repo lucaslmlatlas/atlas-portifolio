@@ -26,7 +26,7 @@ O Atlas não é um único prompt. É um **sistema de 5 perfis Hermes Agent** tra
 |---|---|---|
 | `atlas-orchestrator` | Roteia interações e resolve conflitos cross-pilar | `_SISTEMA/ORCHESTRATOR.md` |
 | `atlas-p1-monitor` | Worker de monitoramento de saúde | `_SISTEMA/AGENTS.md` |
-| `atlas-p1-terapeutico` | Worker de apoio terapêutico | `_SISTEMA/AGENTS.md` |
+| `atlas-p1-bemestar` | Worker de apoio ao pilar saúde | `_SISTEMA/AGENTS.md` |
 | `atlas-p4-analista` | Worker analítico de finanças | `_SISTEMA/AGENTS.md` |
 | `atlas-p4-operacional` | Worker de execução financeira | `_SISTEMA/AGENTS.md` |
 | `atlas-p2-dev` | Worker de desenvolvimento e portfólio *(Fase 2)* | `_SISTEMA/AGENTS.md` |
@@ -47,7 +47,7 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
                ▼
 ┌─────────────────────────────────────┐
 │     5 PERFIS HERMES AGENT ATIVOS    │
-│  Orchestrator │ P1-Monitor│ P1-Terap│
+│  Orchestrator │ P1-Monitor│ P1-BemEs│
 │  P4-Analista  │ P4-Operacional      │
 ├─────────────────────────────────────┤
 │     P2-Dev (Fase 2) — planejado     │
@@ -115,7 +115,7 @@ Abaixo, o fluxo completo mostrando as três camadas (contexto, memória, habilid
 | **Interface** | Telegram (gateway nativo) |
 | **Stack** | VPS Linux + Hermes Agent + GitHub + Telegram |
 | **LLM** | DeepSeek V4 Pro + Gemini 2.5 Flash (fallback) |
-| **Hospedagem** | Integrator Linux Pura — 4 vCPU · 5.8 GB RAM · 99 GB SSD · Ubuntu 26.04 LTS |
+| **Hospedagem** | VPS Linux dedicado com operação contínua 24/7 |
 
 ## Habilidades ativas
 
